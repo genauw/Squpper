@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Squpper.iml" filepath="$PROJECT_DIR$/Squpper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Squpper/Squpper-Squpper.iml" filepath="$PROJECT_DIR$/Squpper/Squpper-Squpper.iml" />
+    </modules>
+  </component>
+</project>
+
