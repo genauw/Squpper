@@ -1,33 +1,26 @@
 package com.loudknees.squpper;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 
 public class SqupperActivity extends Activity {
 
     int counter = 0;
+    int pushupTotal;
+    int squatTotal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_squpper);
 
-        //get information sent with initial intent
-        //Intent intent = getIntent();
-
-        setReps();
         setExercise();
+        setReps();
     }
 
 
@@ -53,12 +46,9 @@ public class SqupperActivity extends Activity {
 
     public String getNumber(){
         String stringReturnNumber;
-
-        //int[] list = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         Random rand = new Random();
         int randomIndex = (rand.nextInt(13)) + 1;
         stringReturnNumber = Integer.toString(randomIndex);
-
         return stringReturnNumber;
     }
 
@@ -67,14 +57,13 @@ public class SqupperActivity extends Activity {
         reps.setText(getNumber());
     }
 
+    /**
+     * Change the name of the exercise in an alternating fasion
+     * When the counter is even, the exercise name should be "push-up"
+     */
     public void setExercise(){
         TextView exerciseNames = (TextView)findViewById(R.id.textViewExerciseName);
-        exerciseNames.setText(R.string.exercise_name_squat);
-    }
-
-    public void changeExercise(){
-        TextView exerciseNames = (TextView)findViewById(R.id.textViewExerciseName);
-        if(counter % 2 ==0) {
+        if(counter % 2 == 0) {
             exerciseNames.setText(R.string.exercise_name_pushup);
         }else{
             exerciseNames.setText(R.string.exercise_name_squat);
@@ -82,9 +71,17 @@ public class SqupperActivity extends Activity {
         counter++;
     }
 
+    public void subTotalPushups(int i){
+        if(counter % 2 == 0){
+            pushupTotal = pushupTotal + i;
+        } else {
+            squatTotal = squatTotal + i;
+        }
+    }
+
     public void nextSet(View view){
         setReps();
-        changeExercise();
+        setExercise();
     }
 
 }
