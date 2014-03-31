@@ -10,5 +10,8 @@
     <string name="exercise_name_squat">Squat</string>
     <string name="exercise_name_pushup">Push-up</string>
     <string name="next_button">Next</string>
+    <string name="finish_button">Finish</string>
+    <string name="title_activity_results">ResultsActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -14,10 +14,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/exercise_name_squat"
         android:id="@+id/textViewExerciseName"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
+        android:textSize="40sp"
+        android:layout_above="@+id/textViewReps"
         android:layout_centerHorizontal="true"
-        android:textSize="40sp" />
+        android:layout_marginBottom="28dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,15 +26,27 @@
         android:id="@+id/textViewReps"
         android:textSize="100sp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="0" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next_button"
         android:id="@+id/nextButton"
-        android:layout_below="@+id/textViewReps"
+        android:textSize="40sp"
+        android:onClick="nextSet"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finish_button"
+        android:id="@+id/finishButton"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="40sp"
-        android:onClick="nextSet"/>
+        android:onClick="finish"/>
 </RelativeLayout>

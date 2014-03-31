@@ -1,6 +1,7 @@
 package com.loudknees.squpper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,7 +72,7 @@ public class SqupperActivity extends Activity {
         counter++;
     }
 
-    public void subTotalPushups(int i){
+    public void subTotal(int i){
         if(counter % 2 == 0){
             pushupTotal = pushupTotal + i;
         } else {
@@ -82,6 +83,11 @@ public class SqupperActivity extends Activity {
     public void nextSet(View view){
         setReps();
         setExercise();
+    }
+
+    public void finish(View view){
+        Intent intent = new Intent(this, ResultsActivity.class);
+        startActivity(intent);
     }
 
 }
