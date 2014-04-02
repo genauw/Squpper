@@ -15,6 +15,7 @@ public class SqupperActivity extends Activity {
     int counter;
     int pushupTotal;
     int squatTotal;
+    int currentNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,10 @@ public class SqupperActivity extends Activity {
         setContentView(R.layout.activity_squpper);
 
         counter = 0;    //maybe change it so that it doesn't always start with even = push-ups
+        pushupTotal = 0;
+        squatTotal = 0;
+
+        getNumber();
         setReps();
         setExercise();
     }
@@ -49,18 +54,11 @@ public class SqupperActivity extends Activity {
 
     /**
      * Creates a random number from 1 - 13 inclusive
-     * @return random number as type String
-     * Adds number to running total for each exercise
+     * Sets "currentNumber" variable to the number
      */
-    public String getNumber(){
-        String stringReturnNumber;
+    public void getNumber(){
         Random rand = new Random();
-        int randomIndex = (rand.nextInt(13)) + 1;
-
-        subTotal(randomIndex);
-
-        stringReturnNumber = Integer.toString(randomIndex);
-        return stringReturnNumber;
+        currentNumber = (rand.nextInt(13)) + 1;
     }
 
     /**
@@ -68,8 +66,9 @@ public class SqupperActivity extends Activity {
      * displays random number in TextView "textViewReps"
      */
     public void setReps(){
+        String currentNumberString = Integer.toString(currentNumber);
         TextView reps = (TextView) findViewById(R.id.textViewReps);
-        reps.setText(getNumber());
+        reps.setText(currentNumberString);
     }
 
     /**
@@ -79,7 +78,7 @@ public class SqupperActivity extends Activity {
      */
     public void setExercise(){
         TextView exerciseNames = (TextView)findViewById(R.id.textViewExerciseName);
-        if(counter % 2 == 0) {
+        if(exerciseChecker()) {
             exerciseNames.setText(R.string.exercise_name_pushup);
         }else{
             exerciseNames.setText(R.string.exercise_name_squat);
@@ -87,29 +86,55 @@ public class SqupperActivity extends Activity {
         counter++;
     }
 
-    public void subTotal(int i){
-        if(counter % 2 == 0){
-            pushupTotal = pushupTotal + i;
+    /**
+     * calculates subtotal for the current exercise
+     */
+    public void subTotal(){
+        if(exerciseChecker()){
+            pushupTotal = pushupTotal + currentNumber;
         } else {
-            squatTotal = squatTotal + i;
+            squatTotal = squatTotal + currentNumber;
+        }
+    }
+
+    /**
+     * uses counter variable to check which current exercise
+     * if even, exercise is push-ups
+     * if odd, squats
+     * @return
+     */
+    public boolean exerciseChecker(){
+        if (counter % 2 == 0){
+            return true;
+        }else{
+            return false;
         }
     }
 
     /**
      * Method initiated by button press from Button "nextButton"
-     * calls two methods "setReps()" and "setExercise()"
-     * changes two TextViews each time
+     * Calculates subtotal for correct exercise if exercise has been "completed"
+     * Gets new random number for next exercise
+     * changes the two TextViews for next set
      * @param view
      */
     public void nextSet(View view){
+        subTotal();
+        getNumber();
         setReps();
         setExercise();
         //maybe create limit on how high counter can go
     }
 
+    /**
+     * When user is finished this button is pressed to show results of session on ResultsActivity
+     * Carries forward subtotals
+     * @param view
+     */
     public void finish(View view){
         Intent intent = new Intent(this, ResultsActivity.class);
         startActivity(intent);
+        //Need to send the two subtotals with intent to display results.
     }
 
 }
