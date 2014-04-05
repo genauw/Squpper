@@ -15,6 +15,7 @@ public class ResultsActivity extends Activity {
         setContentView(R.layout.activity_results);
 
         Intent intent = getIntent();
+        String message = intent.getStringExtra(SqupperActivity.PUSHUP_MESSAGE);
     }
 
 

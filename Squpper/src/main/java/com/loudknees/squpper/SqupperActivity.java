@@ -16,6 +16,7 @@ public class SqupperActivity extends Activity {
     int pushupTotal;
     int squatTotal;
     int currentNumber;
+    public final static String PUSHUP_MESSAGE = "com.loudknees.squpper.PUSHUP_MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +134,8 @@ public class SqupperActivity extends Activity {
      */
     public void finish(View view){
         Intent intent = new Intent(this, ResultsActivity.class);
+        String pushupTotalString = String.valueOf(pushupTotal);
+        intent.putExtra(PUSHUP_MESSAGE, pushupTotalString);
         startActivity(intent);
         //Need to send the two subtotals with intent to display results.
     }
