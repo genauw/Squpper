@@ -136,6 +136,7 @@ public class SqupperActivity extends Activity {
     public void finish(View view){
         Intent intent = new Intent(this, ResultsActivity.class);
         String pushupTotalString = String.valueOf(pushupTotal);
+        String squatTotalString = String.valueOf(squatTotal);
         intent.putExtra(PUSHUP_MESSAGE, pushupTotalString);
         intent.putExtra(SQUAT_MESSAGE, squatTotalString);
         startActivity(intent);
