@@ -103,7 +103,7 @@ public class SqupperActivity extends Activity {
      * uses counter variable to check which current exercise
      * if even, exercise is push-ups
      * if odd, squats
-     * @return
+     * @return boolean
      */
     public boolean exerciseChecker(){
         if (counter % 2 == 0){
@@ -134,6 +134,7 @@ public class SqupperActivity extends Activity {
      * @param view
      */
     public void finish(View view){
+        subTotal();
         Intent intent = new Intent(this, ResultsActivity.class);
         String pushupTotalString = String.valueOf(pushupTotal);
         String squatTotalString = String.valueOf(squatTotal);

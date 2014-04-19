@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class ResultsActivity extends Activity {
@@ -16,7 +17,12 @@ public class ResultsActivity extends Activity {
         setContentView(R.layout.activity_results);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(SqupperActivity.PUSHUP_MESSAGE);
+        String pushupMessage = intent.getStringExtra(SqupperActivity.PUSHUP_MESSAGE);
+        String squatMessage = intent.getStringExtra(SqupperActivity.SQUAT_MESSAGE);
+        TextView pushups = (TextView) findViewById(R.id.pushup_result);
+        TextView squats = (TextView) findViewById(R.id.squat_result);
+        squats.setText(squatMessage);
+        pushups.setText(pushupMessage);
     }
 
 
