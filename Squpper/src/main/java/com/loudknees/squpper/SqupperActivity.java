@@ -85,7 +85,7 @@ public class SqupperActivity extends Activity {
         }else{
             exerciseNames.setText(R.string.exercise_name_squat);
         }
-        counter++;
+        //counter++;
     }
 
     /**
@@ -122,6 +122,7 @@ public class SqupperActivity extends Activity {
      */
     public void nextSet(View view){
         subTotal();
+        counter++;
         getNumber();
         setReps();
         setExercise();
@@ -141,7 +142,6 @@ public class SqupperActivity extends Activity {
         intent.putExtra(PUSHUP_MESSAGE, pushupTotalString);
         intent.putExtra(SQUAT_MESSAGE, squatTotalString);
         startActivity(intent);
-        //Need to send the two subtotals with intent to display results.
     }
 
 }
